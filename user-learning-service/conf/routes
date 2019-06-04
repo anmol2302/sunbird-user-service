@@ -1,0 +1,29 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# User management APIs
+POST	/v1/user/create				            @controllers.usermanagement.UserController.createUser()
+POST	/v2/user/create				            @controllers.usermanagement.UserController.createUserV2()
+PATCH	/v1/user/update					          @controllers.usermanagement.UserProfileUpdateController.updateUser()
+PATCH	/private/user/v1/update					          @controllers.usermanagement.UserProfileUpdateController.updateUser()
+GET  	/v1/user/read/:uid				        @controllers.usermanagement.UserProfileReadController.getUserById(uid:String)
+GET  	/v2/user/read/:uid				        @controllers.usermanagement.UserProfileReadController.getUserByIdV2(uid:String)
+POST  /v1/user/getuser                  @controllers.usermanagement.UserProfileReadController.getUserByLoginId()
+GET   /v1/user/get/:idType/:id          @controllers.usermanagement.UserProfileReadController.getUserByKey(idType:String,id:String)
+POST  /v1/user/search					 @controllers.usermanagement.UserProfileReadController.searchUser()
+POST  /private/user/v1/search            @controllers.usermanagement.UserProfileReadController.searchUser()
+GET   /v1/user/mediatype/list     @controllers.usermanagement.UserProfileReadController.getProfileSupportedSocialMediaTypes()
+POST  /v1/user/profile/visibility @controllers.usermanagement.UserProfileReadController.setProfileVisibility()
+
+POST  /v1/user/block			        @controllers.usermanagement.UserStatusController.blockUser()
+POST  /v1/user/unblock			      @controllers.usermanagement.UserStatusController.unblockUser()
+
+GET   /v1/role/read						    @controllers.usermanagement.RolesController.getRoles()
+POST  /v1/user/assign/role			  @controllers.usermanagement.UserProfileUpdateController.assignRoles()
+POST  /private/user/v1/assign/role	  @controllers.usermanagement.UserProfileUpdateController.assignRoles()
+
+PATCH /v1/user/update/logintime	  @controllers.usermanagement.UserProfileUpdateController.updateLoginTime()
+
+POST  /v1/user/tnc/accept         @controllers.tac.UserTnCController.acceptTnC()
+GET   /v1/user/type/list		  @controllers.usermanagement.UserProfileReadController.getUserTypes()
